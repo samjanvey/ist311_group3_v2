@@ -1,5 +1,6 @@
 package View;
 
+import Model.Transaction;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
@@ -8,18 +9,18 @@ import javax.swing.JPanel;
  * @author Brad
  */
 public class TransactionsPanel extends JPanel {
-    ArrayList<String> transactions;
+    ArrayList<Transaction> transactions;
     
     public TransactionsPanel(){
-        transactions = new ArrayList<String>();
+        transactions = new ArrayList<Transaction>();
         
     }
     
-    public ArrayList<String> getTransactions() {
+    public ArrayList<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(ArrayList<String> transactions) {
+    public void setTransactions(ArrayList<Transaction> transactions) {
         this.transactions = transactions;
     }
     
