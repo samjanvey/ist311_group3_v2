@@ -5,15 +5,14 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.UIManager;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 
 public class MainFrame extends JFrame {
     private MainPanel mPanel;
     private GridBagLayout mGrid;
-    
+    private GridBagConstraints mainConstraints;
+
     private LoginPanel lPanel;
     private GridLayout lLayout;
     
@@ -27,20 +26,20 @@ public class MainFrame extends JFrame {
         //Formating JPanels
         mPanel = new MainPanel();
         mGrid = new GridBagLayout();
+        mainConstraints = new GridBagConstraints();
         mPanel.setLayout(mGrid);
-        GridBagConstraints mpgbc = new GridBagConstraints();
         
         lPanel = new LoginPanel();
         lLayout = new GridLayout();
         lLayout.setColumns(1);
         lLayout.setRows(4);
         lPanel.setLayout(lLayout);
-        mpgbc.fill = GridBagConstraints.BOTH;
-        mpgbc.gridx = 0;
-        mpgbc.gridy = 0;
-//        mpgbc.ipadx = 400;
+        mainConstraints.fill = GridBagConstraints.BOTH;
+        mainConstraints.gridx = 0;
+        mainConstraints.gridy = 0;
+//        mainConstraints.ipadx = 400;
 //        mpgbc.ipady = 750;
-        mPanel.add(lPanel, mpgbc);
+        mPanel.add(lPanel, mainConstraints);
         
         
 //        tPanel = new TransactionsPanel();
@@ -93,6 +92,14 @@ public class MainFrame extends JFrame {
 
     public void setMainGrid(GridBagLayout mainGrid) {
         this.mGrid = mainGrid;
+    }
+
+    public GridBagConstraints getMainConstraints() {
+        return mainConstraints;
+    }
+
+    public void setMainConstraints(GridBagConstraints mainConstraints) {
+        this.mainConstraints = mainConstraints;
     }
     
     public MainPanel getmPanel() {
