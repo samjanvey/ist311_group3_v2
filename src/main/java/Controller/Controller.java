@@ -4,20 +4,9 @@ package Controller;
 import Model.Model;
 import View.View;
 
-import java.awt.Color;
-import static java.awt.Color.cyan;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
-import java.util.ArrayList;
-import java.util.Scanner;
 import javax.swing.JButton;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 
 
 public class Controller
@@ -30,15 +19,24 @@ public class Controller
         this.view = view;
     }   
     
-    private void addLoginListner(){
+    private void addLoginListener(){
         view.getMf().getlPanel().getLogin().addActionListener(
         new ActionListener(){
             @Override
-            public void LoginPressed(ActionEvent click){
+            public void actionPerformed(ActionEvent click){
                 Object clickSource = click.getSource();
                 
                 if(clickSource instanceof JButton){
                     //GET USER AND PASSWORD STRINGS AND PASS TO COMPARE METHOD
+                    String userName = view.getMf().getlPanel().getUser().toString();
+                    String password = view.getMf().getlPanel().getPassword().toString();
+                    System.out.println(""+userName + " "+password); // debugging
+                    
+                    if(!model.getUserList().compareCreds(userName, password)){
+                        // Display UserList.invalidUser;
+                    } else {
+                        
+                    }
                 }
             }
         }

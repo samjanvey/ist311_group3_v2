@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package View;
 
 import Model.User;
@@ -18,7 +14,7 @@ import javax.swing.plaf.ComponentUI;
 
 
 public class LoginPanel extends JPanel{
-    ArrayList<User> users;
+    ArrayList<User> users; // I don't think we need this here. We can handle the arraylist in the Model
     JTextField user;
     JTextField password;
     JButton login;
