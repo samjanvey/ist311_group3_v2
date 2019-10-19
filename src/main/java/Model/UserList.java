@@ -9,15 +9,15 @@ import java.util.ArrayList;
  */
 public class UserList {
     
-    /* 
-       This should be implemented differently.
-       Each time the app is opened, the ArrayList will be created
-       essentially overwriting any previous ArrayList. We need to implement
-       some kind of database scheme. For now, it will create default creds for
-       a demo user: "Admin" : "password"
-    */
     User user;
     ArrayList<User> userList;
+    
+    /* 
+       Display to the user that either username and/or password is invalid 
+       as to not leak information about whether the username exists or not.
+       This should be the default response no matter what component of the 
+       authentication scheme is incorrect.
+    */
     String invalidUser = "The username/password is incorrect";
     
     public UserList(User user) {
@@ -33,7 +33,7 @@ public class UserList {
     }
     
     public User createDefaultUser(){
-        user = new User("admin", "password");
+        user = new User("admin", "password"); // Needs to be deleted eventually
         userList.add(this.user);
         
         return this.user;
@@ -42,12 +42,15 @@ public class UserList {
     public Boolean compareCreds(String user, String pass) {
         // Check if User/pw exists
         for (int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).getEmail().equals(user)) {
-                if (userList.get(i).getPassword().equals(pass)) {
-                    return true;
+            for (int j = 0; j < userList.size(); j++) {
+                if (userList.get(j).getEmail().equals(user)) {
+                    break;
                 } else {
                     return false;
                 }
+            }
+            if (userList.get(i).getPassword().equals(pass)) {
+                return true;
             }
         }
         return false; // Default to False - better safe than sorry
