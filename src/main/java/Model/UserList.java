@@ -12,14 +12,6 @@ public class UserList {
     User user;
     ArrayList<User> userList;
     
-    /* 
-       Display to the user that either username and/or password is invalid 
-       as to not leak information about whether the username exists or not.
-       This should be the default response no matter what component of the 
-       authentication scheme is incorrect.
-    */
-    String invalidUser = "The username/password is incorrect";
-    
     public UserList(User user) {
         
     }

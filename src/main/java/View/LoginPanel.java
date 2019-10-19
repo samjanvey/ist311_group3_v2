@@ -3,6 +3,8 @@ package View;
 
 import Model.User;
 import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JButton;
@@ -19,6 +21,7 @@ public class LoginPanel extends JPanel{
     JTextField password;
     JButton login;
     JLabel auth;
+    JLabel userLabel;
     
     public LoginPanel(){
         super();
@@ -26,8 +29,49 @@ public class LoginPanel extends JPanel{
         setBackground(Color.CYAN);
         
         ArrayList<User> users = new ArrayList<User>();
-        JTextField user = new JTextField("User ID");
-        JTextField password = new JTextField("Password:");
+        JTextField user = new JTextField(30);
+        
+        /* Create Placeholder Text for Username and Password Fields */
+        /* ======================================================== */
+        
+        user.setText("Username or Email");
+        user.addFocusListener(
+                new FocusListener() {
+                    public void focusGained(FocusEvent e) {
+                        if (user.getText().equals("Username or Email")) {
+                            user.setText("");
+                        }
+                    }
+                    
+                    public void focusLost(FocusEvent arg0) {
+                        if (user.getText().equals("")) {
+                            user.setText("Username or Email");
+                        }
+                    }
+                }
+        );
+        JTextField password = new JTextField(24);
+        
+        password.setText("Password");
+        password.addFocusListener(
+                new FocusListener() {
+                    public void focusGained(FocusEvent e) {
+                        if (password.getText().equals("Password")) {
+                            password.setText("");
+                        }
+                    }
+                    
+                    public void focusLost(FocusEvent arg0) {
+                        if (password.getText().equals("")) {
+                            password.setText("Password");
+                        }
+                    }
+                }
+        );
+        
+        /* ===================================================== */
+        
+        
         JButton login = new JButton("Login");
         JLabel auth = new JLabel("Please enter your user ID and password");
         
@@ -35,7 +79,7 @@ public class LoginPanel extends JPanel{
         add(password);
         add(login);
         add(auth);
-        
+        login.requestFocusInWindow(); // I'm trying to get the initial focus to be on the button (not working)
     }
 
     
