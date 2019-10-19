@@ -26,8 +26,8 @@ public class MainFrame extends JFrame {
         //Formating JPanels
         mPanel = new MainPanel();
         mGrid = new GridBagLayout();
+        mainConstraints = new GridBagConstraints();
         mPanel.setLayout(mGrid);
-        GridBagConstraints mainConstraints = new GridBagConstraints();
         
         lPanel = new LoginPanel();
         lLayout = new GridLayout();
