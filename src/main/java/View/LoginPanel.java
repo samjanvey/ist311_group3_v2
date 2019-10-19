@@ -3,6 +3,7 @@ package View;
 
 import Model.User;
 import java.awt.Color;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import javax.swing.plaf.ComponentUI;
 
 
 public class LoginPanel extends JPanel{
-    ArrayList<User> users; // I don't think we need this here. We can handle the arraylist in the Model
+    //ArrayList<User> users; // I don't think we need this here. We can handle the arraylist in the Model
     JTextField user;
     JTextField password;
     JButton login;
@@ -28,8 +29,8 @@ public class LoginPanel extends JPanel{
         
         setBackground(Color.CYAN);
         
-        ArrayList<User> users = new ArrayList<User>();
-        JTextField user = new JTextField(30);
+        //ArrayList<User> users = new ArrayList<User>();
+        user = new JTextField(30);
         
         /* Create Placeholder Text for Username and Password Fields */
         /* ======================================================== */
@@ -50,7 +51,7 @@ public class LoginPanel extends JPanel{
                     }
                 }
         );
-        JTextField password = new JTextField(24);
+        password = new JTextField(24);
         
         password.setText("Password");
         password.addFocusListener(
@@ -72,8 +73,8 @@ public class LoginPanel extends JPanel{
         /* ===================================================== */
         
         
-        JButton login = new JButton("Login");
-        JLabel auth = new JLabel("Please enter your user ID and password");
+        login = new JButton("Login");        
+        auth = new JLabel("Please enter your user ID and password");
         
         add(user);
         add(password);
@@ -84,13 +85,13 @@ public class LoginPanel extends JPanel{
 
     
     // Getters and Setters
-    public ArrayList<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
-    }
+//    public ArrayList<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(ArrayList<User> users) {
+//        this.users = users;
+//    }
     
     public JTextField getUser() {
         return user;

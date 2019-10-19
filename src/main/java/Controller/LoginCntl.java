@@ -28,17 +28,19 @@ public class LoginCntl {
     
     public LoginCntl(Controller controller) {
         this.controller = controller;
+        addLoginListener();
     }
     
     
-    private void addLoginListener(){
+    public void addLoginListener(){
+        System.out.println("Listener started");
         view.getMf().getlPanel().getLogin().addActionListener(
         new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent click){
                 Object clickSource = click.getSource();
                 
-                if(clickSource instanceof JButton){
+                if(clickSource == view.getMf().getlPanel().getLogin()){
                     System.out.println("Clicking"); // debugging
                     
                     //GET USER AND PASSWORD STRINGS AND PASS TO COMPARE METHOD
